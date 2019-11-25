@@ -23,7 +23,18 @@ class TString {
         const char& front() const { return *ptr; } 
         char& back() { return *(ptr+len-1); } 
         const char& back() const { return *(ptr+len-1); } 
-
+        void push_back(char c) { insert(len,c); }
+        void push_back(const char* c) { insert(len,c); }
+        //operatory konwersji
+        operator char*() {return ptr; }
+        operator const char*() const { return ptr; }
+        //operator funkcyjny
+        void operator()(const char& c) {
+            push_back(c);
+        
+        }//obiekt funkcyjny np. s1('A');
+         // oznacza s1.operator()('A');
+        
         char* insert(size_t pos, const char* c);
         char* insert(size_t pos, char c);
 
